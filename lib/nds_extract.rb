@@ -2,26 +2,27 @@ require 'pp'
 require 'pry'
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'directors_database'
-
+ 
 def directors_totals(nds)
           hash_index = 0  
           result = {}  
         
         
     while hash_index < nds.length do  
-      directors = nds[hash_index][:name]# takes entire aoh, first hash, key and value
-      result[directors] = 0  # gt is hash
+      director = nds[hash_index][:name]# takes entire aoh, first hash, key and value
+      result[director] = 0  # gt is total of ww key 
       movie_index = 0
-      
+      gross_total = 0
         while movie_index < nds[hash_index][:movies].length do 
           # pp nds[hash_index][:movies][movie_index][:worldwide_gross]
-          result[directors] += nds[hash_index][:movies][movie_index][:worldwide_gross]
+          gross_amount = nds[hash_index][:movies][movie_index][:worldwide_gross]
+          gross_total += gross_amount
           movie_index += 1
         end
       
-
-      hash_index += 1
-                # result[nds[hash_index][:name]] = gross_total
+        result[nds[hash_index][:name]] = gross_total
+        
+        hash_index += 1
                 # result[nds[hash_index] = gross_total
     end
   
