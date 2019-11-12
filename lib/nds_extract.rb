@@ -7,6 +7,7 @@ def directors_totals(nds)
   #
   #
   # The Hash result be full of things like "Jean-Pierre Jeunet" => "222312123123"
+  
   result = {
   }
   #
@@ -18,5 +19,16 @@ def directors_totals(nds)
   #
   #
   # Be sure to return the result at the end!
-  nil
+
+  row_index = 0
+  while row_index < nds.length do
+    movie_index = 0
+    gross_total = 0
+    while movie_index < nds[row_index][:movies].length do
+      gross_total += nds[row_index][:movies][movie_index][:worldwide_gross]
+    end
+    result[nds[row_index][:name]] = gross_total
+    row_index +=1
+  end
+  result
 end
